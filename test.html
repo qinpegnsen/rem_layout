@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .box {
+    width: 100%;
+    height: auto;
+  }
+
+  .box:before,
+  .box:after {
+    content: '';
+    clear: both;
+    display: block;
+  }
+
+  .lists {
+    width: 20%;
+    height: 100%;
+    float: left;
+    text-decoration: none;
+  }
+
+  .lists .img {
+    width: 100%;
+    height: auto;
+
+  }
+
+  .lists .img img {
+    display: block;
+    width: 0.84rem;
+    height: 0.84rem;
+    margin: 0.1rem auto;
+  }
+
+  .lists .con {
+    text-align: center;
+    width: 100%;
+    font-size: 0.12rem;
+  }
+</style>
+
+<body>
+  <div class="box">
+    <a href="" class="lists">
+      <div class="img">
+        <img src="img/TB1J.e2KVXXXXafXFXXXXXXXXXX-160-160.png_640x640Q30s0.jpg_.webp" alt="" />
+      </div>
+      <div class="con">详细介绍</div>
+    </a>
+    <a href="" class="lists">
+      <div class="img">
+        <img src="img/TB1J.e2KVXXXXafXFXXXXXXXXXX-160-160.png_640x640Q30s0.jpg_.webp" alt="" />
+      </div>
+      <div class="con">详细介绍</div>
+    </a>
+    <a href="" class="lists">
+      <div class="img">
+        <img src="img/TB1J.e2KVXXXXafXFXXXXXXXXXX-160-160.png_640x640Q30s0.jpg_.webp" alt="" />
+      </div>
+      <div class="con">详细介绍</div>
+    </a>
+    <a href="" class="lists">
+      <div class="img">
+        <img src="img/TB1J.e2KVXXXXafXFXXXXXXXXXX-160-160.png_640x640Q30s0.jpg_.webp" alt="" />
+      </div>
+      <div class="con">详细介绍</div>
+    </a>
+    <a href="" class="lists">
+      <div class="img">
+        <img src="img/TB1J.e2KVXXXXafXFXXXXXXXXXX-160-160.png_640x640Q30s0.jpg_.webp" alt="" />
+      </div>
+      <div class="con">详细介绍</div>
+    </a>
+    <a href="" class="lists">
+      <div class="img">
+        <img src="img/TB1J.e2KVXXXXafXFXXXXXXXXXX-160-160.png_640x640Q30s0.jpg_.webp" alt="" />
+      </div>
+      <div class="con">详细介绍</div>
+    </a>
+    <a href="" class="lists">
+      <div class="img">
+        <img src="img/TB1J.e2KVXXXXafXFXXXXXXXXXX-160-160.png_640x640Q30s0.jpg_.webp" alt="" />
+      </div>
+      <div class="con">详细介绍</div>
+    </a>
+    <a href="" class="lists">
+      <div class="img">
+        <img src="img/TB1J.e2KVXXXXafXFXXXXXXXXXX-160-160.png_640x640Q30s0.jpg_.webp" alt="" />
+      </div>
+      <div class="con">详细介绍</div>
+    </a>
+    <a href="" class="lists">
+      <div class="img">
+        <img src="img/TB1J.e2KVXXXXafXFXXXXXXXXXX-160-160.png_640x640Q30s0.jpg_.webp" alt="" />
+      </div>
+      <div class="con">详细介绍</div>
+    </a>
+    <a href="" class="lists">
+      <div class="img">
+        <img src="img/TB1J.e2KVXXXXafXFXXXXXXXXXX-160-160.png_640x640Q30s0.jpg_.webp" alt="" />
+      </div>
+      <div class="con">详细介绍</div>
+    </a>
+
+  </div>
+</body>
+<script>
+
+  /* 
+    设计师一般都是以iphone为标准，750*1334 实际上是物流像素，单位是pt，iphone的逻辑像素是375 px，我们做的话肯定是用px，所以要把设计图的pt都转化为px
+    简单粗暴点是：直接出以2显示，但是在更高分辨率就有问题了，比如 375px 在iphone6是全屏，但是在iphoneX 就不是了
+    所以用rem来解决
+    可以考虑如下，找到每份pt用多少px来显示（375/750）的比例，然后设计图的直接乘以这个比例，就是以这个比例为标准然后乘以设计图每个按钮的pt
+    更简单的：可以考虑把根元素作为这个比例，其他元素在写的时候就是相对于根元素然后相乘。这样就可以直接写设计图的宽高了。
+    但是有个问题是：html最小的字体是12px,注意是字体，最小的单位不是，比如在ios 都识别0.5px；比例通常是0.5，所以扩大100倍。那么设计稿在用的时候统统除以100
+    公式如下（以宽为例）： 
+        屏幕的逻辑像素（就是屏幕的宽
+    bili=   —————————————————————————     
+         设计稿（通常是750）
+
+          屏幕的逻辑像素（就是屏幕的宽）
+    bili*100=   —————————————————————————     
+            设计稿（通常是750）/100
+          所以在用设计稿的时候直接 除以 100	 就可以了
+   */
+  var blocks = 100  // 将页面分为100块
+  var origin = 750  // 设计稿的宽度   750*1334
+  function setFontSize() {
+    var w = document.documentElement.clientWidth;
+    var bili = w / origin * blocks + "px";
+    //这里*100的原因是因为font-size的最小的字体是12px。如果不*100，出来的比例都是0.几。但是算的时候还是回以12px来算，elector("html").style.fontSize=bili+"px";
+    var html = document.querySelector("html")
+    html.style.fontSize = bili;
+    console.log(getComputedStyle(html, null).fontSize)
+  }
+  window.addEventListener("DOMContentLoaded", function () {
+    setFontSize()
+  })
+  // orientationchange事件在设备的纵横方向改变时触发。
+  // resize 屏幕的尺寸发生变化
+  window.addEventListener(window.orientationchange ? 'orientationchange' : 'resize', setFontSize, false);
+</script>
+
+</html>
